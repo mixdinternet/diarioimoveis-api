@@ -1,0 +1,25 @@
+{
+    "name": "mixdinternet/diarioimoveis-client-api",
+    "description": "Pacote para consumir a api do diário imóveis",
+    "keywords": ["php", "diarioimoveis", "api", "guzzle"],
+    "license": "MIT",
+    "homepage": "http://www.mixd.com.br/",
+    "authors": [
+        {
+            "name": "Leonardo Lemos",
+            "email": "leonardo@mixd.com.br",
+            "homepage": "https://github.com/jleonardolemos",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "laravel/framework": "5.1.*",
+        "guzzlehttp/guzzle": "^6.0",
+    },
+    "autoload": {
+        "psr-4": {
+            "DiarioImoveis\\ClientApi\\": "src/"
+        }
+    }
+}
