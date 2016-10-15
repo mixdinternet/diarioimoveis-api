@@ -37,6 +37,7 @@ class ClientFactory
      */
     protected static function getClient(array $config = array())
     {
+        $configParams = [];
         if (!isset($config['api-url'])) {
             $config['api-url'] = 'diarioimoveis.com/api/';
         }
@@ -45,9 +46,17 @@ class ClientFactory
             $config['timeout'] = 2.0;
         }
 
-        return new HttpClient([
+        $configParams = [
             'base_uri' => $config['api-url'],
             'timeout'  => $config['timeout'],
-        ]);
+        ];
+
+        if (isset($config['access_token'])) {
+            $configParams['headers'] = [
+                'Authorization' => 'Bearer ' . $config['access_token'],
+            ];
+        }
+
+        return new HttpClient($configParams);
     }
 }
