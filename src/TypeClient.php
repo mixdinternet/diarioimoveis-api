@@ -4,7 +4,7 @@ namespace DiarioImoveis\ClientApi;
 
 use GuzzleHttp\ClientInterface;
 
-class AdvertisersClient
+class TypeClient
 {
     /**
      * Holds \GuzzleHttp\ClientInterface instance
@@ -24,30 +24,15 @@ class AdvertisersClient
     }
 
     /**
-     * Performs http request to advertisers API
+     * Performs http request to properties API
      *
+     * @var int
      * @var array
      * @return string
      */
     public function get(array $params = [])
     {
-        $response = $this->httpClient->request('GET', '/api/advertisers/', ['query' => $params]);
-        if ($response->getStatusCode() == 200) {
-            return json_decode($response->getBody());
-        }// "200"
-
-        throw new Exception('Request erros, code: ' . $response->getStatusCode());
-    }
-
-    /**
-     * Performs http request to advertisers API, fetches a specific advertiser by slug
-     *
-     * @var array
-     * @return string
-     */
-    public function find(string $slug)
-    {
-        $response = $this->httpClient->request('GET', '/api/advertisers/' . $slug);
+        $response = $this->httpClient->request('GET', '/api/types', ['query' => $params]);
         if ($response->getStatusCode() == 200) {
             return json_decode($response->getBody());
         }// "200"

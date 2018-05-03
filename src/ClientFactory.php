@@ -30,12 +30,34 @@ class ClientFactory
 
     /**
      * @param array $config
+     * returns API client configured.
+     * @return \DiarioImoveis\ApiClient\PropertiesClient
+     */
+    public static function getTypeClient(array $config)
+    {
+        $httpClient = self::getClient($config);
+        return new TypeClient($httpClient);
+    }
+
+    /**
+     * @param array $config
+     * returns API client configured.
+     * @return \DiarioImoveis\ApiClient\PropertiesClient
+     */
+    public static function getNeighborhoodClient(array $config)
+    {
+        $httpClient = self::getClient($config);
+        return new NeighborhoodClient($httpClient);
+    }
+
+    /**
+     * @param array $config
      *
      * returns API client configured.
      * @var \GuzzleHttp\ClientInterface
      * @return \GuzzleHttp\ClientInterface
      */
-    protected static function getClient(array $config = array())
+    protected static function getClient(array $config = [])
     {
         $configParams = [];
         if (!isset($config['api-url'])) {
@@ -48,7 +70,7 @@ class ClientFactory
 
         $configParams = [
             'base_uri' => $config['api-url'],
-            'timeout'  => $config['timeout'],
+            'timeout' => $config['timeout'],
         ];
 
         if (isset($config['access_token'])) {
