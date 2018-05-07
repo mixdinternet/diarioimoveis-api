@@ -40,14 +40,14 @@ class AdvertisersClient
     }
 
     /**
-     * Performs http request to advertisers API, fetches a specific advertiser by slug
+     * Performs http request to advertisers API, fetches a specific advertiser by id
      *
      * @var array
      * @return string
      */
-    public function find(string $slug)
+    public function find($id)
     {
-        $response = $this->httpClient->request('GET', '/api/advertisers/' . $slug);
+        $response = $this->httpClient->request('GET', '/api/advertisers/' . $id);
         if ($response->getStatusCode() == 200) {
             return json_decode($response->getBody());
         }// "200"

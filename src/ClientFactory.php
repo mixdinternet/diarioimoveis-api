@@ -65,7 +65,7 @@ class ClientFactory
         }
 
         if (!isset($config['timeout'])) {
-            $config['timeout'] = 2.0;
+            $config['timeout'] = 0;
         }
 
         $configParams = [
