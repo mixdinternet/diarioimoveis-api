@@ -54,4 +54,20 @@ class AdvertisersClient
 
         throw new Exception('Request erros, code: ' . $response->getStatusCode());
     }
+
+    /**
+     * Performs http request to advertisers API, fetches a specific advertiser by host
+     *
+     * @var array
+     * @return string
+     */
+    public function findByHost($host)
+    {
+        $response = $this->httpClient->request('GET', '/api/advertisers/website/' . $host);
+        if ($response->getStatusCode() == 200) {
+            return json_decode($response->getBody());
+        }// "200"
+
+        throw new Exception('Request erros, code: ' . $response->getStatusCode());
+    }
 }
